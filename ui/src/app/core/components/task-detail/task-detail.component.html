@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title">Task Details</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <div class="mb-3">
+    <strong>ID:</strong> {{ task.id }}
+  </div>
+  <div class="mb-3">
+    <strong>Title:</strong> {{ task.title }}
+  </div>
+  <div class="mb-3">
+    <strong>Status:</strong>
+    <span class="badge" [ngClass]="{
+      'bg-success': task.isCompleted,
+      'bg-warning': !task.isCompleted
+    }">
+      {{ task.isCompleted ? 'Completed' : 'Pending' }}
+    </span>
+  </div>
+  <div class="mb-3">
+    <strong>Due Date:</strong> {{ formatDate(task.dueDate) }}
+  </div>
+  <div class="mb-3" *ngIf="task.description">
+    <strong>Description:</strong> {{ task.description }}
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

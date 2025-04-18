@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  padding-bottom: 2rem;
+}
+
+.card {
+  margin-top: 1rem;
+}
+
+.badge {
+  font-size: 0.9em;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

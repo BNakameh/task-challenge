@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <h2>Task List</h2>
+
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+    <button (click)="loadTasks()" class="btn btn-sm btn-outline-danger ms-2">Retry</button>
+  </div>
+
+  <div *ngIf="!isLoading && !error">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.id }}</td>
+          <td>{{ task.title }}</td>
+          <td>
+            <span class="badge" [ngClass]="{
+              'bg-success': task.isCompleted,
+              'bg-warning': !task.isCompleted
+            }">
+              {{ task.isCompleted ? 'Completed' : 'Pending' }}
+            </span>
+          </td>
+          <td>{{ formatDate(task.dueDate) }}</td>
+          <td>
+            <button (click)="viewTaskDetails(task.id)" class="btn btn-sm btn-primary me-2">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="tasks.length === 0" class="alert alert-info">
+      No tasks found. Create a new task to get started.
+    </div>
+  </div>
+</div>
