@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TaskDetailComponent } from '../task-detail/task-detail.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
   standalone: true,
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule],
+  providers: [DatePipe]
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
@@ -54,9 +56,5 @@ export class TaskListComponent implements OnInit {
         console.error('Error loading task details:', err);
       }
     });
-  }
-
-  formatDate(dateString: string): string {
-    return new Date(dateString).toLocaleDateString();
   }
 }

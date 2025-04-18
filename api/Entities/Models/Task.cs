@@ -1,4 +1,4 @@
-namespace coding_challenge.Models;
+﻿namespace coding_challenge.Entities.Models;
 
 public record Task(
     int Id,
